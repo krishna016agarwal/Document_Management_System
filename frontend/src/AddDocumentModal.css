@@ -1,0 +1,105 @@
+.modal-overlay { /* This class is shared with EditModal, style centrally or duplicate */
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--modal-overlay-bg); /* Use variable */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1050;
+}
+
+.modal-content.add-doc-modal {
+    background-color: var(--bg-primary); /* Use variable */
+    color: var(--text-primary); /* Use variable */
+    padding: 25px; border-radius: 8px;
+    box-shadow: 0 5px 15px var(--box-shadow-color); /* Use variable */
+    min-width: 550px; max-width: 80%;
+    display: flex; flex-direction: column;
+}
+
+.modal-content.add-doc-modal h2 {
+    margin-top: 0; margin-bottom: 20px; font-size: 1.5em;
+    color: var(--text-primary); /* Use variable */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-secondary); /* Use variable */
+}
+.form-group label.radio-label {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary); /* Radio label text */
+}
+.form-group label.radio-label input[type="radio"] {
+    margin-right: 8px;
+    vertical-align: middle;
+    accent-color: var(--link-color); /* Style radio button color */
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--input-border-color); /* Use variable */
+    border-radius: 4px;
+    background-color: var(--input-bg-color); /* Use variable */
+    color: var(--text-primary); /* Use variable */
+}
+.form-group input[type="file"] {
+    padding: 5px;
+}
+/* Style file input button for dark mode if needed, often browser-specific */
+body.dark-mode .form-group input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+body.dark-mode .form-group input[type="file"] {
+    border-color: var(--input-border-color);
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: var(--text-secondary); /* Use variable */
+}
+
+/* .error-message is styled globally in App.css now */
+
+.modal-actions {
+    display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;
+}
+
+.modal-actions button {
+    padding: 10px 20px; border-radius: 4px; cursor: pointer;
+    border: none; font-weight: bold;
+}
+.modal-actions .save-btn {
+    background-color: var(--action-btn-revert-bg); /* Using revert green for save */
+    color: var(--action-btn-revert-text);
+}
+.modal-actions .save-btn:hover {
+    background-color: #218838; /* Darker green */
+}
+body.dark-mode .modal-actions .save-btn:hover {
+    background-color: #1a682b;
+}
+
+.modal-actions .cancel-btn {
+    background-color: var(--button-secondary-bg); /* Use variable */
+    color: var(--button-secondary-text);
+}
+.modal-actions .cancel-btn:hover {
+    background-color: #545b62; /* Darker secondary for hover */
+}

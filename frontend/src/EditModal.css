@@ -1,0 +1,83 @@
+.modal-overlay { /* Shared with AddDocumentModal, ensure consistency or centralize */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--modal-overlay-bg); /* Use variable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content { /* This is a more generic .modal-content than AddDocumentModal's specific one */
+    background-color: var(--bg-primary); /* Use variable */
+    color: var(--text-primary); /* Use variable */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--box-shadow-color); /* Use variable */
+    min-width: 500px;
+    max-width: 80%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: var(--text-primary); /* Use variable */
+}
+
+.modal-content textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid var(--input-border-color); /* Use variable */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-family: monospace;
+    font-size: 0.95em;
+    resize: vertical;
+    flex-grow: 1;
+    background-color: var(--input-bg-color); /* Use variable */
+    color: var(--text-primary); /* Use variable */
+}
+
+.modal-actions { /* Shared styling, ensure it's consistent or centralized */
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+.modal-actions .save-btn {
+    background-color: var(--action-btn-revert-bg); /* Using revert green for save, matches AddDocumentModal */
+    color: var(--action-btn-revert-text);
+}
+.modal-actions .save-btn:hover {
+    background-color: #218838; /* Darker green */
+}
+body.dark-mode .modal-actions .save-btn:hover {
+    background-color: #1a682b;
+}
+
+.modal-actions .cancel-btn {
+    background-color: #dc3545; /* Standard cancel red */
+    color: white;
+}
+.modal-actions .cancel-btn:hover {
+    background-color: #c82333; /* Darker red */
+}
+body.dark-mode .modal-actions .cancel-btn {
+    background-color: #c82333; /* Keep it strong red or adjust for dark */
+}
+body.dark-mode .modal-actions .cancel-btn:hover {
+    background-color: #a71d2a;
+}

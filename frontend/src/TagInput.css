@@ -1,0 +1,29 @@
+/* frontend/src/TagInput.css */
+.tag-input-container {
+    display: flex; flex-wrap: wrap; align-items: center;
+    border: 1px solid var(--border-color); /* Uses variable */
+    border-radius: 5px; padding: 5px;
+    background-color: var(--input-bg-color); /* Use variable for input-like background */
+}
+
+.tag-item {
+    display: inline-flex; align-items: center;
+    background-color: var(--button-primary-bg); /* Uses variable */
+    color: var(--button-primary-text); /* Uses variable */
+    padding: 3px 8px; border-radius: 4px; margin: 3px; font-size: 0.85em;
+}
+
+.remove-tag-btn {
+    background: none; border: none; color: inherit;
+    margin-left: 6px; padding: 0; font-size: 1.1em;
+    line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.remove-tag-btn:hover { opacity: 1; }
+
+.tag-input-field {
+    flex-grow: 1; border: none; outline: none; padding: 6px;
+    font-size: 0.9em; background-color: transparent; /* Good for inheriting container bg */
+    color: var(--text-primary); /* Uses variable */
+    min-width: 150px;
+}
+.tag-input-field::placeholder { color: var(--text-secondary); opacity: 0.8; }

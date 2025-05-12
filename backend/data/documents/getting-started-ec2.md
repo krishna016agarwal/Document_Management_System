@@ -1,0 +1,1 @@
+# Getting Started with EC2 \n Follow these steps.

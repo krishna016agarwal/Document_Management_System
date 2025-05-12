@@ -1,0 +1,104 @@
+[
+  {
+    "id": "2",
+    "name": "EC2 Instances",
+    "type": "category",
+    "children": [
+      {
+        "id": "2.1",
+        "name": "Overview",
+        "type": "document",
+        "filePath": "ec2-overview.html",
+        "lastUpdated": "2025-05-11T03:19:48.658Z",
+        "children": [],
+        "isMarkdownContent": false
+      },
+      {
+        "id": "2.2",
+        "name": "Getting Started",
+        "type": "document",
+        "filePath": "getting-started-ec2.md",
+        "lastUpdated": "2025-05-11T03:19:48.658Z",
+        "children": [],
+        "isMarkdownContent": true
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "name": "Introduction",
+    "type": "document",
+    "filePath": "introduction.md",
+    "lastUpdated": "2025-05-11T03:19:48.658Z",
+    "children": [],
+    "isMarkdownContent": true
+  },
+  {
+    "id": "527d5475-e4d7-43ac-af89-2fe11b27c585",
+    "name": "krishnas",
+    "type": "category",
+    "children": [
+      {
+        "id": "60a566b8-7f0e-4814-86e3-5666c87bd402",
+        "name": "k2",
+        "type": "category",
+        "children": [
+          {
+            "id": "a615ec6e-6534-42e9-9247-5b1926cf19a7",
+            "name": "page",
+            "type": "document",
+            "isMarkdownContent": true,
+            "children": [],
+            "lastUpdated": "2025-05-11T05:22:04.958Z",
+            "content": "# heading 1\n\n**hello ji**\n\n## Heading II\n  * first\n  * second\n\n### Heading III\n+ 1\n* 32\n- 3\n\n# Heading IV\n* hello ji \n* hi\n\n\n"
+          }
+        ],
+        "lastUpdated": "2025-05-11T03:19:55.487Z"
+      },
+      {
+        "id": "ec11024e-b3fe-4f60-a3a5-130e0a97f708",
+        "name": "k3",
+        "type": "category",
+        "children": [
+          {
+            "id": "b472cd13-5e1f-4bd4-8998-121c90c7906a",
+            "name": "k4",
+            "type": "category",
+            "children": [
+              {
+                "id": "d301d58f-beb9-4f05-8d15-7e72e25ffc10",
+                "name": "k5",
+                "type": "document",
+                "isMarkdownContent": false,
+                "content": "<p>hello ji</p>\n<h1>k5</h1>\n<h2>hj<h2>\n<img src=\"data:image/jpeg;base64,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\"</img>",
+                "children": [],
+                "lastUpdated": "2025-05-11T03:27:10.262Z"
+              }
+            ],
+            "lastUpdated": "2025-05-11T03:22:31.546Z"
+          }
+        ],
+        "lastUpdated": "2025-05-11T03:22:16.867Z"
+      }
+    ],
+    "lastUpdated": "2025-05-11T03:19:48.654Z"
+  },
+  {
+    "id": "new_doc_example",
+    "name": "My New Doc (Inline)",
+    "type": "document",
+    "content": "<h1>Inline Content</h1><p>This content is directly in the data.</p>",
+    "lastUpdated": "2025-05-11T03:19:48.658Z",
+    "children": [],
+    "isMarkdownContent": false
+  },
+  {
+    "id": "3",
+    "name": "S3 Buckets",
+    "type": "document",
+    "lastUpdated": "2025-05-11T03:21:34.629Z",
+    "children": [],
+    "isMarkdownContent": false,
+    "content": "<h1>S3 Storage</h1> <p>All about S3.</p>\n\n<h2>hello ji</h2>"
+  }
+]

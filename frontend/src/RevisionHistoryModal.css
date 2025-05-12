@@ -1,0 +1,121 @@
+.revision-modal-overlay .modal-content.revision-modal-content {
+    min-width: 80%;
+    max-width: 900px;
+    max-height: 85vh;
+    /* background-color, color, box-shadow inherited from generic .modal-content if defined in EditModal.css,
+       or override here if needed using var(--bg-primary) etc. */
+}
+
+.revision-modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    color: var(--text-primary); /* Use variable */
+}
+
+.revision-layout {
+    display: flex;
+    gap: 20px;
+    height: calc(85vh - 180px);
+    min-height: 400px;
+}
+
+.revision-list-pane {
+    flex: 1;
+    border: 1px solid var(--border-color); /* Use variable */
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: var(--bg-secondary); /* Use variable */
+}
+
+.revision-list-pane h3,
+.revision-preview-pane h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: var(--text-primary); /* Use variable */
+    border-bottom: 1px solid var(--border-color); /* Use variable */
+    padding-bottom: 8px;
+}
+
+.revision-list-pane ul { list-style: none; padding: 0; margin: 0; }
+
+.revision-list-pane li {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color); /* Use variable */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+    color: var(--text-secondary); /* Text color for list items */
+}
+.revision-list-pane li:last-child { border-bottom: none; }
+.revision-list-pane li:hover { background-color: var(--bg-hover); /* Use variable */ }
+.revision-list-pane li.active-revision {
+    background-color: var(--bg-active); /* Use variable */
+    color: var(--text-active); /* Use variable */
+    font-weight: 500;
+}
+body.dark-mode .revision-list-pane li.active-revision {
+    background-color: var(--bg-active); /* Ensure this var is suitable for dark mode active */
+}
+
+
+.revision-list-pane li span {
+    /* color: var(--text-secondary); Inherited from li now */
+}
+.revision-list-pane li .action-btn {
+    padding: 5px 10px; border-radius: 4px;
+    border: 1px solid transparent; cursor: pointer;
+    font-size: 0.85em; margin-left: 8px;
+}
+.revision-list-pane li .view-btn {
+    background-color: var(--action-btn-view-bg);
+    color: var(--action-btn-view-text);
+    border-color: var(--action-btn-view-border);
+}
+.revision-list-pane li .view-btn:hover {
+    background-color: #0056b3; /* Specific hover or var(--action-btn-view-hover-bg) */
+}
+body.dark-mode .revision-list-pane li .view-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.revision-list-pane li .revert-btn {
+    background-color: var(--action-btn-revert-bg);
+    color: var(--action-btn-revert-text);
+    border-color: var(--action-btn-revert-border);
+}
+.revision-list-pane li .revert-btn:hover {
+    background-color: #1e7e34; /* Specific hover or var(--action-btn-revert-hover-bg) */
+}
+body.dark-mode .revision-list-pane li .revert-btn:hover {
+    background-color: #155d27;
+}
+
+.revision-preview-pane {
+    flex: 2;
+    border: 1px solid var(--border-color); /* Use variable */
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: var(--bg-primary); /* Preview content area background */
+}
+
+.revision-preview-pane .document-body {
+    font-size: 0.95em;
+    /* Styles for h1, p, code etc. within preview will inherit from App.css's .document-body */
+}
+
+.revision-modal-content .modal-actions { margin-top: 20px; justify-content: flex-end; }
+.revision-modal-content .modal-actions .cancel-btn { /* Standard cancel button */
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+}
+.revision-modal-content .modal-actions .cancel-btn:hover {
+    background-color: #545b62;
+}
+
+
+/* .error-message is styled globally in App.css now */

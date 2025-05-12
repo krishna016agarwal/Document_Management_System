@@ -1,0 +1,297 @@
+:root {
+  --bg-primary: #fff;
+  --bg-secondary: #f8f9fa; /* Sidebar */
+  --bg-hover: #e9ecef;
+  --bg-active: #007bff;
+  --text-primary: #212529;
+  --text-secondary: #495057; /* Sidebar headers, less important text */
+  --text-active: #fff;
+  --border-color: #e9ecef; /* Softer borders */
+  --link-color: #007bff;
+  --button-primary-bg: #007bff;
+  --button-primary-text: #fff;
+  --button-secondary-bg: #6c757d;
+  --button-secondary-text: #fff;
+  --context-menu-bg: #fff;
+  --context-menu-border: #dee2e6;
+  --context-menu-hover-bg: #f8f9fa;
+  --context-menu-text: #343a40;
+  --code-bg: #e9ecef;
+  --blockquote-border: #007bff;
+  --blockquote-text: #495057;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+  --input-border-color: #ccc; /* From AddDocumentModal */
+  --input-bg-color: #fff; /* Assuming inputs have white bg by default */
+  --error-text-color: red;
+  --error-bg-color: #ffebee;
+  --error-border-color: #ef9a9a;
+  --action-btn-view-bg: #007bff;
+  --action-btn-view-text: #fff;
+  --action-btn-view-border: #007bff;
+  --action-btn-revert-bg: #28a745;
+  --action-btn-revert-text: #fff;
+  --action-btn-revert-border: #28a745;
+}
+
+body.dark-mode, :root.dark-mode { /* Apply to body or :root */
+  --bg-primary: #212529;
+  --bg-secondary: #343a40;
+  --bg-hover: #495057;
+  --bg-active: #0d6efd;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  /* --text-active: #fff; (remains same) */
+  --border-color: #495057;
+  --link-color: #69b5ff;
+  --button-primary-bg: #0d6efd;
+  /* --button-primary-text: #fff; (remains same) */
+  --button-secondary-bg: #5a6268;
+  /* --button-secondary-text: #fff; (remains same) */
+  --context-menu-bg: #343a40;
+  --context-menu-border: #495057;
+  --context-menu-hover-bg: #495057; /* Same as bg for subtle effect, or slightly lighter */
+  --context-menu-text: #f8f9fa;
+  --code-bg: #495057;
+  --blockquote-border: #69b5ff;
+  --blockquote-text: #adb5bd;
+  --box-shadow-color: rgba(255, 255, 255, 0.05);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.75); /* Darker overlay for dark mode */
+  --input-border-color: #5a6268;
+  --input-bg-color: #343a40; /* Dark inputs */
+  --error-text-color: #ff7b7b; /* Lighter red */
+  --error-bg-color: #5c2323; /* Dark red bg */
+  --error-border-color: #a71d2a;
+  --action-btn-view-bg: #0d6efd;
+  /* --action-btn-view-text: #fff; */
+  --action-btn-view-border: #0d6efd;
+  --action-btn-revert-bg: #1e7e34; /* Darker green */
+  /* --action-btn-revert-text: #fff; */
+  --action-btn-revert-border: #1e7e34;
+}
+
+
+/* === Global and Root Styles === */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Documentation App Specific Styles === */
+.app-container {
+  display: flex;
+  width: 95%;
+  max-width: 1400px;
+  height: 90vh;
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 25px var(--box-shadow-color);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h2 {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.sidebar-header button { /* This is the '+' button */
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+  transition: background-color 0.2s ease;
+}
+.sidebar-header button:hover {
+  background: #0056b3; /* Specific hover, or var(--button-primary-hover-bg) */
+}
+body.dark-mode .sidebar-header button:hover {
+  background: #0b5ed7; /* Dark mode hover for primary button */
+}
+
+
+.category-item-draggable {
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+  /* Active state is handled by inline styles in App.jsx due to react-beautiful-dnd snapshot */
+}
+.category-item-draggable:hover:not(.active) {
+  background-color: var(--bg-hover);
+}
+
+.category-tree-droppable-list .item-name {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+}
+
+.options-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 2px 5px;
+  color: var(--text-secondary);
+  margin-left: auto;
+  border-radius: 4px;
+}
+.options-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(0,0,0,0.05);
+}
+body.dark-mode .options-btn:hover {
+  background-color: rgba(255,255,255,0.07); /* Lighter subtle hover for dark */
+}
+
+
+.quick-tips {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+.quick-tips h4 { margin-top: 0; margin-bottom: 0.5em; font-weight: 600; }
+.quick-tips ul { padding-left: 18px; margin-top: 0; margin-bottom: 0; list-style-type: disc; }
+.quick-tips ul li { margin-bottom: 4px; }
+
+
+.content-pane {
+  flex-grow: 1;
+  padding: 0px 30px 30px 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-header h1 { margin: 0; font-size: 1.7em; font-weight: 600; color: var(--text-primary); }
+#documentLastUpdated { font-size: 0.8em; color: var(--text-secondary); margin-left: auto; padding-left: 1em; }
+
+#editDocumentBtn, .content-header .history-btn {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;
+  margin-left: 10px; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease;
+}
+#editDocumentBtn:hover, .content-header .history-btn:hover {
+  background-color: #545b62; /* Darker secondary hover */
+}
+body.dark-mode .content-header .history-btn { /* Keep specific history button color if desired */
+    background-color: #17a2b8;
+}
+body.dark-mode .content-header .history-btn:hover {
+   background-color: #138496;
+}
+
+
+.document-body { padding-top: 10px; line-height: 1.7; color: var(--text-primary); }
+.document-body h1, .document-body h2, .document-body h3, .document-body h4 {
+  margin-top: 1.8em; margin-bottom: 0.6em; font-weight: 600; color: var(--text-primary);
+}
+.document-body h1 { font-size: 1.8em; } .document-body h2 { font-size: 1.5em; } .document-body h3 { font-size: 1.25em; }
+.document-body p { margin-top: 0; margin-bottom: 1.2em; }
+.document-body a { color: var(--link-color); text-decoration: none; }
+.document-body a:hover { text-decoration: underline; }
+.document-body code { background-color: var(--code-bg); color: var(--text-primary); padding: 0.2em 0.4em; margin: 0; font-size: 85%; border-radius: 3px; font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+body.dark-mode .document-body code { color: #f8f9fa; /* Ensure contrast */ }
+.document-body pre { background-color: var(--code-bg); padding: 15px; border-radius: 5px; overflow-x: auto; }
+.document-body pre code { padding: 0; margin: 0; font-size: inherit; background: none; }
+.document-body blockquote { border-left: 4px solid var(--blockquote-border); padding-left: 15px; margin-left: 0; color: var(--blockquote-text); font-style: italic; }
+.document-body ul, .document-body ol { padding-left: 25px; margin-bottom: 1em; }
+.document-body li { margin-bottom: 0.3em; }
+
+.context-menu {
+  position: absolute; background-color: var(--context-menu-bg); border: 1px solid var(--context-menu-border);
+  box-shadow: 0 2px 10px var(--box-shadow-color); border-radius: 6px; padding: 8px 0;
+  z-index: 1000; min-width: 180px;
+}
+.context-menu-item { padding: 10px 20px; cursor: pointer; font-size: 0.9em; white-space: nowrap; color: var(--context-menu-text); transition: background-color 0.15s ease; }
+.context-menu-item:hover { background-color: var(--context-menu-hover-bg); color: var(--link-color); }
+.context-menu-item.delete { color: #dc3545; }
+body.dark-mode .context-menu-item.delete { color: #ff7b7b; }
+
+
+.category-tree-droppable-list div[data-rbd-placeholder-context-id] { min-height: 10px; }
+
+.theme-toggle-btn {
+    background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary);
+    padding: 6px 10px; border-radius: 5px; cursor: pointer; font-size: 1.1em;
+    line-height: 1; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle-btn:hover { background-color: var(--bg-hover); border-color: var(--link-color); }
+
+.document-tags-container {
+    margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed var(--border-color);
+    display: flex; flex-wrap: wrap; gap: 8px;
+}
+.document-tag-item {
+    background-color: var(--bg-hover); color: var(--text-secondary); padding: 4px 10px;
+    border-radius: 15px; font-size: 0.8em; cursor: default;
+}
+body.dark-mode .document-tag-item { background-color: var(--bg-secondary); }
+
+/* General error message styling (used in modals) */
+.error-message {
+    color: var(--error-text-color);
+    background-color: var(--error-bg-color);
+    border: 1px solid var(--error-border-color);
+    font-size: 0.9em;
+    margin-top: 5px; /* From AddDocumentModal */
+    margin-bottom: 10px; /* From RevisionHistoryModal */
+    padding: 8px;
+    border-radius: 4px;
+}

@@ -5,7 +5,8 @@
 
 ---
 
-![Document Management Banner](https://i.imgur.com/QG2XQ7I.png)
+![Screenshot](https://github.com/krishna016agarwal/Document_Management_System/blob/main/Screenshot%202025-05-12%20180345.png?raw=true)
+
 
 ## 📚 About the Project
 
@@ -26,17 +27,7 @@ A modern and intuitive **Document Management System** that helps you store, mana
 - ✅ **Drag-and-Drop Folder Management**
 - ✅ **Responsive UI with Modern UX**
 
----
 
-## 🖼️ Sneak Peek
-
-> Here's how it looks in action:
-
-| Document Viewer 🧐 | Folder Management 📁 |
-|-------------------|----------------------|
-| ![doc-view](https://i.imgur.com/kcK6JTu.png) | ![folder-drop](https://i.imgur.com/Y2xnFbt.png) |
-
----
 
 ## 🔧 Tech Stack
 

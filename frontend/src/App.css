@@ -295,3 +295,178 @@ body.dark-mode .document-tag-item { background-color: var(--bg-secondary); }
     padding: 8px;
     border-radius: 4px;
 }
+
+.file-preview-placeholder {
+    padding: 20px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    margin-top: 20px;
+    background-color: var(--bg-secondary);
+}
+.file-preview-placeholder p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+.download-link, #downloadFileBtn { /* Style download button similar to other action buttons */
+    display: inline-block;
+    padding: 8px 15px; /* Match #editDocumentBtn padding */
+    background-color: var(--button-primary-bg); /* Or var(--button-secondary-bg) for consistency */
+    color: var(--button-primary-text) !important;
+    text-decoration: none;
+    border-radius: 5px; /* Match #editDocumentBtn radius */
+    font-weight: 500; /* Match #editDocumentBtn font-weight */
+    font-size: 0.9em; /* Match #editDocumentBtn font-size */
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Match #editDocumentBtn margin */
+    transition: background-color 0.2s ease;
+}
+.download-link:hover, #downloadFileBtn:hover {
+    background-color: #0056b3; /* Adjust hover color or use variable */
+}
+body.dark-mode .download-link, body.dark-mode #downloadFileBtn {
+    background-color: var(--link-color);
+}
+body.dark-mode .download-link:hover, body.dark-mode #downloadFileBtn:hover {
+    background-color: #0b5ed7; /* Darker primary or link hover */
+}
+
+.document-body embed,
+.document-body iframe,
+.document-body img {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color); /* Optional border for embedded content */
+    border-radius: 4px;
+}
+.document-body embed,
+.document-body iframe {
+    min-height: calc(100vh - 250px); /* Adjust as needed */
+    width: 100%;
+}
+.document-body img {
+    max-height: calc(100vh - 200px); /* Adjust as needed */
+}
+
+
+
+
+
+
+
+
+
+
+
+.content-header {
+  /* ... existing styles ... */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping if space is tight */
+}
+
+.content-header h1 {
+  margin-right: auto; /* Pushes actions to the right */
+}
+
+.content-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between buttons/text */
+  margin-left: 20px; /* Space from the title */
+}
+
+#documentLastUpdated {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  margin: 0; /* Remove default paragraph margins */
+}
+
+#editDocumentBtn,
+.content-header .history-btn,
+#downloadFileBtn.download-link { /* Target the download button specifically if it's an <a> tag */
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text) !important; /* Important for <a> tags */
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-decoration: none; /* For <a> tags */
+  transition: background-color 0.2s ease;
+  display: inline-block; /* For <a> tags */
+}
+
+#editDocumentBtn:hover,
+.content-header .history-btn:hover,
+#downloadFileBtn.download-link:hover {
+  background-color: #545b62; /* Darker secondary hover */
+}
+
+body.dark-mode #editDocumentBtn,
+body.dark-mode .content-header .history-btn,
+body.dark-mode #downloadFileBtn.download-link {
+    background-color: var(--button-secondary-bg); /* Ensure dark mode uses variables */
+}
+body.dark-mode #editDocumentBtn:hover,
+body.dark-mode .content-header .history-btn:hover,
+body.dark-mode #downloadFileBtn.download-link:hover {
+   background-color: #495057; /* Darker secondary hover for dark mode */
+}
+
+/* Styles for generic R2 file previews */
+.file-preview-placeholder {
+    padding: 20px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    margin-top: 20px;
+    background-color: var(--bg-secondary);
+}
+.file-preview-placeholder p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+/* Style the download link within placeholder consistently with other buttons */
+.file-preview-placeholder .download-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text) !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.file-preview-placeholder .download-link:hover {
+    background-color: #0056b3; /* Or var(--button-primary-hover-bg) */
+}
+body.dark-mode .file-preview-placeholder .download-link {
+    background-color: var(--link-color); /* Or a primary button color for dark mode */
+}
+body.dark-mode .file-preview-placeholder .download-link:hover {
+    background-color: #0b5ed7;
+}
+
+.document-body embed,
+.document-body iframe {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-height: calc(100vh - 260px); /* Adjust as needed, considering breadcrumbs, header, tags */
+    width: 100%;
+}
+.document-body img { /* Image specific max-height */
+    max-height: calc(100vh - 220px); /* Adjust as needed */
+}

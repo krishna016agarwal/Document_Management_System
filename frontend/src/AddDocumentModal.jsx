@@ -1,9 +1,25 @@
 import { useState } from 'react';
 import './AddDocumentModal.css';
 
+const ALLOWED_FILE_EXTENSIONS_MAP = {
+    '.md': 'text/markdown',
+    '.html': 'text/html',
+    '.pdf': 'application/pdf',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.webp': 'image/webp',
+    '.svg': 'image/svg+xml',
+    '.doc': 'application/msword',
+    '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
+const ACCEPT_STRING = Object.keys(ALLOWED_FILE_EXTENSIONS_MAP).join(',');
+
+
 function AddDocumentModal({ isOpen, onClose, onSave, parentName }) {
     const [docName, setDocName] = useState('');
-    const [docCreationType, setDocCreationType] = useState('blank'); // 'blank', 'upload'
+    const [docCreationType, setDocCreationType] = useState('blank');
     const [localFile, setLocalFile] = useState(null);
     const [fileError, setFileError] = useState('');
 
@@ -32,41 +48,48 @@ function AddDocumentModal({ isOpen, onClose, onSave, parentName }) {
         let newDocData = {
             name: docName.trim(),
             type: 'document',
-            isMarkdownContent: false, // Default, will be updated
-            content: '',
         };
 
         if (docCreationType === 'blank') {
             newDocData.content = '<h1>New Document</h1><p>Start editing your content here.</p>';
-            newDocData.isMarkdownContent = false; // Assuming blank is HTML initially
+            newDocData.isMarkdownContent = false;
+            // storageType will be 'inline', set by backend if not FormData
         } else if (docCreationType === 'upload') {
             if (!localFile) {
                 setFileError('Please select a file to upload.');
                 return;
             }
-            try {
-                const fileContent = await readFileContent(localFile);
-                newDocData.content = fileContent;
-                if (localFile.name.endsWith('.md')) {
-                    newDocData.isMarkdownContent = true;
+
+            const fileName = localFile.name.toLowerCase();
+            if (fileName.endsWith('.md') || fileName.endsWith('.html')) {
+                try {
+                    const fileContent = await readFileContent(localFile);
+                    newDocData.content = fileContent;
+                    newDocData.isMarkdownContent = fileName.endsWith('.md');
+                    // storageType will be 'inline'
+                } catch (error) {
+                    console.error("Error reading .md/.html file:", error);
+                    setFileError('Error reading text file content.');
+                    return;
                 }
-                setFileError('');
-            } catch (error) {
-                console.error("Error reading file:", error);
-                setFileError('Error reading file content.');
-                return;
+            } else {
+                // For PDF, images, DOCX etc., pass the File object to be handled by FormData
+                newDocData.localFile = localFile; // This signals App.jsx to use FormData
+                newDocData.isMarkdownContent = false; // Not applicable for binary files
+                // storageType will be 'r2', set by backend
             }
         }
-
-        onSave(newDocData); // Pass to App.jsx's handleSaveNewItem
+        setFileError('');
+        onSave(newDocData);
         handleClose();
     };
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            if (!file.name.endsWith('.md') && !file.name.endsWith('.html')) {
-                setFileError('Please select a .md or .html file.');
+            const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+            if (!Object.keys(ALLOWED_FILE_EXTENSIONS_MAP).includes(fileExtension) && !Object.values(ALLOWED_FILE_EXTENSIONS_MAP).includes(file.type)) {
+                setFileError(`Unsupported file type. Allowed extensions: ${ACCEPT_STRING}`);
                 setLocalFile(null);
                 event.target.value = '';
                 return;
@@ -105,22 +128,23 @@ function AddDocumentModal({ isOpen, onClose, onSave, parentName }) {
                         <label className="radio-label">
                             <input type="radio" name="docCreationType" value="blank"
                                 checked={docCreationType === 'blank'} onChange={(e) => setDocCreationType(e.target.value)}
-                            /> New Blank Document
+                            /> New Blank Document (HTML Editor)
                         </label>
                         <label className="radio-label">
                             <input type="radio" name="docCreationType" value="upload"
                                 checked={docCreationType === 'upload'} onChange={(e) => setDocCreationType(e.target.value)}
-                            /> Create from Local File (Upload Content)
+                            /> Create from Local File
                         </label>
                     </div>
                 </div>
                 {docCreationType === 'upload' && (
                     <div className="form-group">
-                        <label htmlFor="localFileUploaderModal">Select Local File (.md or .html):</label>
+                        <label htmlFor="localFileUploaderModal">Select Local File:</label>
                         <input type="file" id="localFileUploaderModal"
-                            accept=".md,.html,text/markdown,text/html"
+                            accept={ACCEPT_STRING}
                             onChange={handleFileChange}
                         />
+                         <small>Allowed: .md, .html, .pdf, images, .doc, .docx</small>
                         {fileError && <p className="error-message">{fileError}</p>}
                     </div>
                 )}
